@@ -930,18 +930,8 @@ document.addEventListener('DOMContentLoaded',function(){
       if(id){
         e.preventDefault();
         e.stopPropagation();
-        const tappedTop=card.getBoundingClientRect().top;
         expandedProjectId=expandedProjectId===id?null:id;
         renderProjectRail(filteredList.length?filteredList:DATA);
-        requestAnimationFrame(function(){
-          const target=[...document.querySelectorAll('.railProject')].find(function(el){
-            const rid=el.querySelector('.railId');
-            return rid&&rid.textContent.trim()===id;
-          });
-          if(!target)return;
-          const newTop=target.getBoundingClientRect().top;
-          window.scrollBy(0,newTop-tappedTop);
-        });
       }
       return;
     }
